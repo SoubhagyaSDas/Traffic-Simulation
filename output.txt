@@ -1,0 +1,78 @@
+cd "/Users/soubhagyadas/Desktop/Object Software Design/C++/" && g++ tempCodeRunnerFile.cpp -o tempCodeRunnerFile && "/Users/soubhagyadas/Desktop/Object Software Design/C++/"tempCodeRunnerFile
+soubhagyadas@Soubhagyas-MBP Traffic-Simulation % cd "/Users/soubhagyadas/Desktop/Object Software Design/C++/" && g++ tempCodeRunn
+erFile.cpp -o tempCodeRunnerFile && "/Users/soubhagyadas/Desktop/Object Software Design/C++/"tempCodeRunnerFile
+tempCodeRunnerFile.cpp:6:12: error: unknown type name 'constexpr'
+    static constexpr double AccRate = 3.5;           // Acceleration rate for cars in m/s
+           ^
+tempCodeRunnerFile.cpp:7:12: error: unknown type name 'constexpr'
+    static constexpr double AccRateEmpty = 2.5;      // Acceleration rate for light trucks in m/s
+           ^
+tempCodeRunnerFile.cpp:8:12: error: unknown type name 'constexpr'
+    static constexpr double AccRateFull = 1.0;       // Acceleration rate for heavy trucks in m/s
+           ^
+tempCodeRunnerFile.cpp:9:12: error: unknown type name 'constexpr'
+    static constexpr double DecRate = 7.0;           // Braking rate for cars in m/s
+           ^
+tempCodeRunnerFile.cpp:10:12: error: unknown type name 'constexpr'
+    static constexpr double DecRateEmpty = 5.0;      // Braking rate for light trucks in m/s
+           ^
+tempCodeRunnerFile.cpp:11:12: error: unknown type name 'constexpr'
+    static constexpr double DecRateFull = 2.0;       // Braking rate for light trucks in m/s
+           ^
+tempCodeRunnerFile.cpp:12:12: error: unknown type name 'constexpr'
+    static constexpr double MpsToMph = 2.237;
+           ^
+tempCodeRunnerFile.cpp:17:25: warning: default member initializer for non-static data member is a C++11 extension [-Wc++11-extensions]
+    double currentSpeed = 0.0;
+                        ^
+tempCodeRunnerFile.cpp:51:39: warning: 'override' keyword is a C++11 extension [-Wc++11-extensions]
+    void Accelerate(int secondsDelta) override {
+                                      ^
+tempCodeRunnerFile.cpp:55:39: warning: 'override' keyword is a C++11 extension [-Wc++11-extensions]
+    void Decelerate(int secondsDelta) override {
+                                      ^
+tempCodeRunnerFile.cpp:68:39: warning: 'override' keyword is a C++11 extension [-Wc++11-extensions]
+    void Accelerate(int secondsDelta) override {
+                                      ^
+tempCodeRunnerFile.cpp:75:39: warning: 'override' keyword is a C++11 extension [-Wc++11-extensions]
+    void Decelerate(int secondsDelta) override {
+                                      ^
+tempCodeRunnerFile.cpp:97:25: warning: range-based for loop is a C++11 extension [-Wc++11-extensions]
+        for (Vehicle* v : vehicles) {
+                        ^
+6 warnings and 7 errors generated.
+soubhagyadas@Soubhagyas-MBP C++ % cd "/Users/soubhagyadas/Desktop/Object Software Design/C++/" && g++ changed.cpp -o changed -std=c++11 && "/Users/soubhagyadas/Desktop/Object Software Design/C++/"changed
+
+3Car speed: 7.8295 mph
+5Truck speed: 5.5925 mph
+5Truck speed: 2.237 mph
+3Car speed: 15.659 mph
+5Truck speed: 11.185 mph
+5Truck speed: 4.474 mph
+3Car speed: 23.4885 mph
+5Truck speed: 16.7775 mph
+5Truck speed: 6.711 mph
+3Car speed: 31.318 mph
+5Truck speed: 22.37 mph
+5Truck speed: 8.948 mph
+3Car speed: 39.1475 mph
+5Truck speed: 27.9625 mph
+5Truck speed: 11.185 mph
+3Car speed: 46.977 mph
+5Truck speed: 33.555 mph
+5Truck speed: 13.422 mph
+3Car speed: 54.8065 mph
+5Truck speed: 39.1475 mph
+5Truck speed: 15.659 mph
+3Car speed: 62.636 mph
+5Truck speed: 44.74 mph
+5Truck speed: 17.896 mph
+3Car speed: 65 mph
+5Truck speed: 50.3325 mph
+5Truck speed: 20.133 mph
+3Car speed: 65 mph
+5Truck speed: 55 mph
+5Truck speed: 22.37 mph
+3Car speed: 65 mph
+5Truck speed: 55 mph
+5Truck speed: 24.607 mph
