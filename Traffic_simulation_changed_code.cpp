@@ -1,6 +1,27 @@
 #include <iostream>
 #include <vector>
 
+class Vehicle; // Forward declaration of Vehicle class
+
+class ISimOutput {
+public:
+    virtual double GetSpeed(const Vehicle& v) const = 0;
+};
+
+class MetricOutput : public ISimOutput {
+public:
+    double GetSpeed(const Vehicle& v) const override {
+        return v.GetCurrentSpeed() * 1.6; // Convert to km/h
+    }
+};
+
+class ImperialOutput : public ISimOutput {
+public:
+    double GetSpeed(const Vehicle& v) const override {
+        return v.GetCurrentSpeed();
+    }
+};
+
 class Constants {
 public:
     static constexpr double AccRate = 3.5;           // Acceleration rate for cars in m/s
@@ -22,7 +43,7 @@ protected:
     virtual void Decelerate(int secondsDelta) = 0;
 
 public:
-    double GetCurrentSpeed() {
+    double GetCurrentSpeed() const {
         return currentSpeed;
     }
 
@@ -31,18 +52,14 @@ public:
     }
 
     void SetCurrentSpeed(double speed) {
-        if (currentSpeed <= speed) { // accelerating
-            if (speed > desiredSpeed) currentSpeed = desiredSpeed;
-            else currentSpeed = speed;
-        } else { // braking
-            if (speed < desiredSpeed) currentSpeed = desiredSpeed;
-            else currentSpeed = speed;
-        }
+        currentSpeed = (speed < desiredSpeed) ? speed : desiredSpeed;
     }
 
     void UpdateSpeed(int seconds) {
-        if (currentSpeed > desiredSpeed) Decelerate(seconds);
-        else if (currentSpeed < desiredSpeed) Accelerate(seconds);
+        if (currentSpeed > desiredSpeed)
+            Decelerate(seconds);
+        else if (currentSpeed < desiredSpeed)
+            Accelerate(seconds);
     }
 };
 
@@ -81,6 +98,8 @@ protected:
 };
 
 int main() {
+    ISimOutput* simOutput = new MetricOutput(); // Change to MetricOutput or ImperialOutput as needed
+
     Car car;
     car.SetDesiredSpeed(65.0);
     Truck truck1(4);
@@ -96,10 +115,11 @@ int main() {
     for (int i = 0; i < 11; i++) {
         for (Vehicle* v : vehicles) {
             v->UpdateSpeed(1);
-            std::string s = typeid(*v).name();
-            std::cout << s << " speed: " << v->GetCurrentSpeed() << " mph" << std::endl;
+            std::cout << typeid(*v).name() << " speed: " << simOutput->GetSpeed(*v) << std::endl;
         }
     }
+
+    delete simOutput; // Don't forget to delete dynamically allocated memory
 
     return 0;
 }
